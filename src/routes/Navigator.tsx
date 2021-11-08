@@ -6,7 +6,7 @@ import RNBootSplash from 'react-native-bootsplash';
 import { ThemeProvider } from 'styled-components/native';
 import { COLORS } from '@assets/theme';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
-import { LandingView } from '@containers/.';
+import { LandingView, ListView } from '@containers/.';
 
 const Navigator = () => {
   const Stack = createStackNavigator();
@@ -26,6 +26,7 @@ const Navigator = () => {
               headerMode="none"
             >
               <Stack.Screen name="LandingScreen" component={LandingView} />
+              <Stack.Screen name="ListScreen" component={ListView} />
             </Stack.Navigator>
           </NavigationContainer>
         </View>
