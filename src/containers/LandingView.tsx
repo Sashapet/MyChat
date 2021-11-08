@@ -2,12 +2,12 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components/native';
 import { moderateScale, scale } from '@utils/helpers/dimensions';
 import { SecondaryButton } from '@components/index';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 
 export const LandingView: React.FC = () => {
-  const { navigate } = useNavigation();
+  // const { navigate } = useNavigation();
   const navigateToLogin = useCallback(() => {
-    navigate('LoginScreen');
+    // navigate('ContactScreen');
   }, []);
 
   return (
@@ -15,8 +15,8 @@ export const LandingView: React.FC = () => {
       <UpperSection>
         <LogoImg source={require('@assets/images/logo.png')} />
         <LogoTextContainer>
-          <LogoText1>Producti</LogoText1>
-          <LogoText2>Fy</LogoText2>
+          <LogoText1>My</LogoText1>
+          <LogoText2>Chat</LogoText2>
         </LogoTextContainer>
         <Paragraph>
           It is a long established fact that a reader will be distracted by the
@@ -32,6 +32,8 @@ export const LandingView: React.FC = () => {
 const UpperSection = styled.View`
   width: 100%;
   align-items: center;
+  flex: 1;
+  justify-content: center;
 `;
 const LandingContainer = styled.View`
   flex: 1;
@@ -40,11 +42,11 @@ const LandingContainer = styled.View`
   justify-content: space-between;
 `;
 const LogoImg = styled.Image`
-  width: ${scale(159)}px;
-  height: ${scale(152)}px;
+  width: ${scale(120)}px;
+  height: ${scale(100)}px;
 `;
 const LogoTextContainer = styled.View`
-  padding-vertical: ${moderateScale(55, 2)}px;
+  padding-vertical: ${moderateScale(26, 2)}px;
   flex-direction: row;
 `;
 const LogoText1 = styled.Text`
