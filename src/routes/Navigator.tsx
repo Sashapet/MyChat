@@ -6,7 +6,7 @@ import RNBootSplash from 'react-native-bootsplash';
 import { ThemeProvider } from 'styled-components/native';
 import { COLORS } from '@assets/theme';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
-import { HomeView } from '@containers/.';
+import { LandingView } from '@containers/.';
 
 const Navigator = () => {
   const Stack = createStackNavigator();
@@ -25,7 +25,7 @@ const Navigator = () => {
               screenOptions={{ cardStyle: { backgroundColor: COLORS.white } }}
               headerMode="none"
             >
-              <Stack.Screen name="HomeScreen" component={HomeView} />
+              <Stack.Screen name="LandingScreen" component={LandingView} />
             </Stack.Navigator>
           </NavigationContainer>
         </View>
