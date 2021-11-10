@@ -6,7 +6,7 @@ import RNBootSplash from 'react-native-bootsplash';
 import { ThemeProvider } from 'styled-components/native';
 import { COLORS, FONTS } from '@assets/theme';
 import { View } from 'react-native';
-import { LandingView, ListView } from '@containers/.';
+import { LandingView, ListView, ProfileView } from '@containers/.';
 import { scale } from '@utils/helpers/dimensions';
 import { AddIcon, BackIcon } from '@components/icons';
 
@@ -58,6 +58,26 @@ const Navigator = () => {
               }}
               name="ListScreen"
               component={ListView}
+            />
+            <Stack.Screen
+              options={{
+                title: 'Profile',
+                headerTitleAlign: 'center',
+                headerTintColor: COLORS.black01,
+                headerStyle: {
+                  backgroundColor: COLORS.primary,
+                },
+                headerTitleStyle: {
+                  fontFamily: FONTS.Poppins.PoppinsLight,
+                  fontSize: scale(FONTS.size.l),
+                },
+                headerLeftContainerStyle: {
+                  marginLeft: 10,
+                },
+                headerLeft: () => <BackIcon />,
+              }}
+              name="ProfileScreen"
+              component={ProfileView}
             />
           </Stack.Navigator>
         </NavigationContainer>

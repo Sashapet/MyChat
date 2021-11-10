@@ -4,13 +4,16 @@ import styled from 'styled-components/native';
 import { default as DetailsIcon } from 'react-native-vector-icons/Entypo';
 import { COLORS } from '@assets/theme';
 
-export const Contact = () => (
-  <ContactWrapper>
+export const Employee: React.FC<{ name: string; profession: string }> = ({
+  name,
+  profession,
+}) => (
+  <>
     <ProfileContainer>
       <Image source={require('@assets/images/profile.png')} />
       <Details>
-        <Name>John Jones</Name>
-        <Profession>UX/UI designer</Profession>
+        <Name>{name}</Name>
+        <Profession>{profession}</Profession>
       </Details>
     </ProfileContainer>
     <DetailsIcon
@@ -19,19 +22,9 @@ export const Contact = () => (
       color={COLORS.black01}
       name="dots-three-vertical"
     />
-  </ContactWrapper>
+  </>
 );
 
-const ContactWrapper = styled.View`
-  height: ${scale(71)}px;
-  border-radius: 10px;
-  elevation: 7;
-  background-color: ${({ theme }) => theme.colors.secondary};
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  margin-bottom: ${scale(10)}px;
-`;
 const ProfileContainer = styled.View`
   flex-direction: row;
   align-items: center;
