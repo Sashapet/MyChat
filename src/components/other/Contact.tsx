@@ -1,28 +1,34 @@
 import { moderateScale, scale } from '@utils/helpers/dimensions';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components/native';
 import { default as DetailsIcon } from 'react-native-vector-icons/Entypo';
 import { COLORS } from '@assets/theme';
+import { useNavigation } from '@react-navigation/native';
 
-export const Contact = () => (
-  <ContactWrapper>
-    <ProfileContainer>
-      <Image source={require('@assets/images/profile.png')} />
-      <Details>
-        <Name>John Jones</Name>
-        <Profession>UX/UI designer</Profession>
-      </Details>
-    </ProfileContainer>
-    <DetailsIcon
-      style={{ marginRight: 3 }}
-      size={scale(22)}
-      color={COLORS.black01}
-      name="dots-three-vertical"
-    />
-  </ContactWrapper>
-);
-
-const ContactWrapper = styled.View`
+export const Contact = () => {
+  const { navigate } = useNavigation();
+  const navigateToProfile = useCallback(() => {
+    navigate('ProfileScreen');
+  }, []);
+  return (
+    <ContactWrapper onPress={navigateToProfile}>
+      <ProfileContainer>
+        <Image source={require('@assets/images/profile.png')} />
+        <Details>
+          <Name>John Jones</Name>
+          <Profession>UX/UI designer</Profession>
+        </Details>
+      </ProfileContainer>
+      <DetailsIcon
+        style={{ marginRight: 3 }}
+        size={scale(22)}
+        color={COLORS.black01}
+        name="dots-three-vertical"
+      />
+    </ContactWrapper>
+  );
+};
+const ContactWrapper = styled.TouchableOpacity`
   height: ${scale(71)}px;
   border-radius: 10px;
   elevation: 7;
