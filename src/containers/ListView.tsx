@@ -1,11 +1,11 @@
 import { scale } from '@utils/helpers/dimensions';
 import React from 'react';
 import styled from 'styled-components/native';
-import { Contacts } from '@components/other';
+import { Employees } from '@components/other';
 
 export const ListView = () => (
   <ListContainer>
-    <Contacts />
+    <Employees />
     <LogoTextContainer>
       <LogoText1>My</LogoText1>
       <LogoText2>Link</LogoText2>
@@ -19,11 +19,11 @@ const ListContainer = styled.View`
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: ${scale(52)}px;
 `;
 
 const LogoTextContainer = styled.View`
   flex-direction: row;
+  padding-bottom: 10%;
 `;
 const LogoText1 = styled.Text`
   color: ${({ theme }) => theme.colors.black01};
