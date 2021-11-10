@@ -24,7 +24,7 @@ export const FONTS = {
   Montserrat: MONTSERRAT,
   Poppins: POPPINS,
   size: {
-    xs: 10,
+    xs: 11,
     s: 16,
     m: 20,
     l: 28,
