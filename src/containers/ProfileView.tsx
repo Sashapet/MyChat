@@ -7,8 +7,7 @@ import { SecondaryButton } from '@components/buttons';
 
 export const ProfileView: React.FC = () => {
   const { params } = useRoute();
-  const employee = params as EmployeeProps;
-  const { name, place, profession, company, skills } = employee;
+  const { name, place, profession, company, skills } = params as EmployeeProps;
   return (
     <ProfileContainer>
       <Information>
@@ -30,10 +29,6 @@ export const ProfileView: React.FC = () => {
           <SecondaryButton>Hire Me</SecondaryButton>
         </ButtonContainer>
       </Information>
-
-      {/* <ButtonContainer>
-        <SecondaryButton>Hire Me</SecondaryButton>
-      </ButtonContainer> */}
       <LogoTextContainer>
         <LogoText1>My</LogoText1>
         <LogoText2>Link</LogoText2>
