@@ -23,7 +23,7 @@ export const BackIcon = () => {
 export const AddIcon = () => {
   const { navigate } = useNavigation();
   const navigateToAdd = useCallback(() => {
-    navigate('AddScreen');
+    navigate('NewRecordScreen');
   }, []);
   return (
     <HeaderIcon
