@@ -4,13 +4,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { lightTheme } from '@assets/theme/theme';
 import RNBootSplash from 'react-native-bootsplash';
 import { ThemeProvider } from 'styled-components/native';
-import { COLORS } from '@assets/theme';
+import { COLORS, FONTS } from '@assets/theme';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
-import { LandingView } from '@containers/.';
+import {
+  LandingView,
+  ListView,
+  NewRecordView,
+  ProfileView,
+} from '@containers/.';
+import { scale } from '@utils/helpers/dimensions';
+import { AddIcon, BackIcon } from '@components/icons';
 
-const Navigator = () => {
+import { ROUTES } from './RouteNames';
+
+const Navigator: React.FC = () => {
   const Stack = createStackNavigator();
-
   //hide splash
   const hideSplash = useCallback(() => {
     RNBootSplash.hide({ fade: true });
@@ -18,14 +26,87 @@ const Navigator = () => {
 
   return (
     <ThemeProvider theme={lightTheme}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ flex: 1 }}>
           <NavigationContainer onReady={hideSplash}>
             <Stack.Navigator
-              screenOptions={{ cardStyle: { backgroundColor: COLORS.white } }}
-              headerMode="none"
+              screenOptions={{
+                cardStyle: {
+                  backgroundColor: COLORS.primary,
+                },
+              }}
             >
-              <Stack.Screen name="LandingScreen" component={LandingView} />
+              <Stack.Screen
+                options={{
+                  headerShown: false,
+                }}
+                name={ROUTES.LandingScreen}
+                component={LandingView}
+              />
+              <Stack.Screen
+                options={{
+                  title: 'Employees',
+                  headerTitleAlign: 'center',
+                  headerTintColor: COLORS.black01,
+                  headerStyle: {
+                    backgroundColor: COLORS.primary,
+                  },
+                  headerTitleStyle: {
+                    fontFamily: FONTS.Poppins.PoppinsLight,
+                    fontSize: scale(FONTS.size.l),
+                  },
+                  headerLeftContainerStyle: {
+                    marginLeft: 10,
+                  },
+                  headerRightContainerStyle: {
+                    marginRight: 10,
+                  },
+                  headerLeft: () => <BackIcon />,
+                  headerRight: () => <AddIcon />,
+                }}
+                name={ROUTES.ListScreen}
+                component={ListView}
+              />
+              <Stack.Screen
+                options={{
+                  title: 'Profile',
+                  headerTitleAlign: 'center',
+                  headerTintColor: COLORS.black01,
+                  headerStyle: {
+                    backgroundColor: COLORS.primary,
+                  },
+                  headerTitleStyle: {
+                    fontFamily: FONTS.Poppins.PoppinsLight,
+                    fontSize: scale(FONTS.size.l),
+                  },
+                  headerLeftContainerStyle: {
+                    marginLeft: 10,
+                  },
+                  headerLeft: () => <BackIcon />,
+                }}
+                name={ROUTES.ProfileScreen}
+                component={ProfileView}
+              />
+              <Stack.Screen
+                options={{
+                  title: 'New employee',
+                  headerTitleAlign: 'center',
+                  headerTintColor: COLORS.black01,
+                  headerStyle: {
+                    backgroundColor: COLORS.primary,
+                  },
+                  headerTitleStyle: {
+                    fontFamily: FONTS.Poppins.PoppinsLight,
+                    fontSize: scale(FONTS.size.l),
+                  },
+                  headerLeftContainerStyle: {
+                    marginLeft: 10,
+                  },
+                  headerLeft: () => <BackIcon />,
+                }}
+                name={ROUTES.NewRecordScreen}
+                component={NewRecordView}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </View>

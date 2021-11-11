@@ -1,5 +1,5 @@
-import { appActions } from './app/AppActions';
+import { employeeActions } from './employee/EmployeeActions';
 
 export const actions = {
-  app: appActions,
+  employee: employeeActions,
 };
