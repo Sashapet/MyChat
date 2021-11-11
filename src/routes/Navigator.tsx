@@ -15,7 +15,9 @@ import {
 import { scale } from '@utils/helpers/dimensions';
 import { AddIcon, BackIcon } from '@components/icons';
 
-const Navigator = () => {
+import { ROUTES } from './RouteNames';
+
+const Navigator: React.FC = () => {
   const Stack = createStackNavigator();
   //hide splash
   const hideSplash = useCallback(() => {
@@ -38,7 +40,7 @@ const Navigator = () => {
                 options={{
                   headerShown: false,
                 }}
-                name="LandingScreen"
+                name={ROUTES.LandingScreen}
                 component={LandingView}
               />
               <Stack.Screen
@@ -62,7 +64,7 @@ const Navigator = () => {
                   headerLeft: () => <BackIcon />,
                   headerRight: () => <AddIcon />,
                 }}
-                name="ListScreen"
+                name={ROUTES.ListScreen}
                 component={ListView}
               />
               <Stack.Screen
@@ -82,7 +84,7 @@ const Navigator = () => {
                   },
                   headerLeft: () => <BackIcon />,
                 }}
-                name="ProfileScreen"
+                name={ROUTES.ProfileScreen}
                 component={ProfileView}
               />
               <Stack.Screen
@@ -102,7 +104,7 @@ const Navigator = () => {
                   },
                   headerLeft: () => <BackIcon />,
                 }}
-                name="NewRecordScreen"
+                name={ROUTES.NewRecordScreen}
                 component={NewRecordView}
               />
             </Stack.Navigator>

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Employees } from '@components/other';
 
-export const ListView = () => (
+export const ListView: React.FC = () => (
   <ListContainer>
     <Employees />
     <LogoTextContainer>

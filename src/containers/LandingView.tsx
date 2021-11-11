@@ -3,11 +3,12 @@ import styled from 'styled-components/native';
 import { moderateScale, scale } from '@utils/helpers/dimensions';
 import { SecondaryButton } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
+import { ROUTES } from '@routes/RouteNames';
 
 export const LandingView: React.FC = () => {
   const { navigate } = useNavigation();
   const navigateToLogin = useCallback(() => {
-    navigate('ListScreen');
+    navigate(ROUTES.ListScreen);
   }, []);
 
   return (

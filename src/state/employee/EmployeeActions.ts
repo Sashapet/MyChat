@@ -14,5 +14,9 @@ const fetchEmployees = (payload: Array<EmployeeProps>) => ({
   type: constants.employee.FETCH,
   payload,
 });
+const error = (payload: string) => ({
+  type: constants.employee.ERROR,
+  payload,
+});
 
-export const employeeActions = { create, setOnSync, fetchEmployees };
+export const employeeActions = { create, setOnSync, fetchEmployees, error };

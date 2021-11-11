@@ -33,5 +33,6 @@ export function* watchEmployees() {
     }
   } catch (e) {
     console.tron.log(e.message);
+    yield put(actions.employee.error(e.message));
   }
 }

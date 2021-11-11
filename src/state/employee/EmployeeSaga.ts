@@ -14,6 +14,7 @@ function* createEmployee(data: {
     yield call(api.create, payload.employee, payload.imageUri);
   } catch (e) {
     console.tron.log(e.message);
+    yield put(actions.employee.error(e.message));
   } finally {
     yield put(actions.employee.setOnSync(false));
   }
@@ -22,26 +23,3 @@ function* createEmployee(data: {
 export default function* employeeSaga() {
   yield takeLeading(constants.employee.CREATE, createEmployee);
 }
-
-// function* login(data: { type: string; payload: SignProps }) {
-//     try {
-//       const { payload } = data;
-
-//       yield call(authApi.login, payload.email, payload.password);
-//       yield put(
-//         actions.app.setOnSync({
-//           type: setOnSyncConstants.login,
-//           setOnSync: true,
-//         }),
-//       );
-//     } catch (e) {
-//       console.tron.log(e.message);
-//     } finally {
-//       yield put(
-//         actions.app.setOnSync({
-//           type: setOnSyncConstants.login,
-//           setOnSync: false,
-//         }),
-//       );
-//     }
-//   }

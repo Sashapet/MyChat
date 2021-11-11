@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { scale } from '@utils/helpers/dimensions';
 import React, { useCallback } from 'react';
 import { default as HeaderIcon } from 'react-native-vector-icons/AntDesign';
+import { ROUTES } from '@routes/RouteNames';
 
 export const BackIcon = () => {
   const { goBack } = useNavigation();
@@ -23,7 +24,7 @@ export const BackIcon = () => {
 export const AddIcon = () => {
   const { navigate } = useNavigation();
   const navigateToAdd = useCallback(() => {
-    navigate('NewRecordScreen');
+    navigate(ROUTES.NewRecordScreen);
   }, []);
   return (
     <HeaderIcon
