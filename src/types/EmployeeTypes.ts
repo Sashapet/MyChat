@@ -1,8 +1,10 @@
 export type EmployeeProps = {
-  employeeId: string;
-  name: string;
-  place: string;
+  employeeId?: string;
+  url?: string;
+  firstname: string;
+  lastname: string;
+  country: string;
+  city: string;
   profession: string;
   company: string;
-  skills: Array<string>;
 };

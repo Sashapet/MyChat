@@ -4,119 +4,14 @@ import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { EmployeeProps } from '@typings/EmployeeTypes';
 import { scale } from '@utils/helpers/dimensions';
+import { selectors } from '@state/selectors';
+import { useSelector } from 'react-redux';
 
 import { Employee } from './Employee';
 
-const employees = [
-  {
-    employeeId: '1',
-    name: 'John Jones',
-    place: 'Lithuania, Vilnius',
-    profession: 'UX/UI designer',
-    company: 'Kilo',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '2',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '3',
-    name: 'John Travollta',
-    place: 'USA, New York',
-    profession: 'Actor',
-    company: 'Hollywood',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '4',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '5',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '6',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '7',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '8',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '9',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '10',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '11',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '12',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-  {
-    employeeId: '13',
-    name: 'Martin King',
-    place: 'Lithuania, Kaunas',
-    profession: 'UX/UI designer',
-    company: 'Teso',
-    skills: ['UX/UI', 'FIGMA', 'PS'],
-  },
-];
-
 export const Employees = () => {
   const { navigate } = useNavigation();
-
+  const employees = useSelector(selectors.employee.employees);
   const navigateToProfile = useCallback(
     (EmployeeProps: EmployeeProps) => () => {
       navigate('ProfileScreen', EmployeeProps);
@@ -131,7 +26,11 @@ export const Employees = () => {
         keyExtractor={item => item.employeeId}
         renderItem={({ item }) => (
           <EmployeeWrapper onPress={navigateToProfile(item)}>
-            <Employee name={item.name} profession={item.profession} />
+            <Employee
+              image={item.url}
+              name={item.firstname}
+              profession={item.profession}
+            />
           </EmployeeWrapper>
         )}
         style={{ margin: '-2%' }}

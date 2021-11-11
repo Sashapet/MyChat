@@ -1,5 +1,5 @@
-import { appConstants } from './app/AppConstants';
+import { employeeConstants } from './employee/EmployeeConstants';
 
 export const constants = {
-  app: appConstants,
+  employee: employeeConstants,
 };

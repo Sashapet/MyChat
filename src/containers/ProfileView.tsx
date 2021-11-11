@@ -1,30 +1,27 @@
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 import { scale } from '@utils/helpers/dimensions';
 import { EmployeeProps } from '@typings/EmployeeTypes';
 import { SecondaryButton } from '@components/buttons';
 
 export const ProfileView: React.FC = () => {
   const { params } = useRoute();
-  const { name, place, profession, company, skills } = params as EmployeeProps;
+  const { firstname, lastname, country, city, profession, company, url } =
+    params as EmployeeProps;
   return (
     <ProfileContainer>
       <Information>
-        <Image source={require('@assets/images/profile.png')} />
-        <Name>{name}</Name>
-        <Place>{place}</Place>
+        <Image source={{ uri: url }} />
+        <Name>
+          {firstname} {lastname}
+        </Name>
+        <Place>
+          {country}, {city}
+        </Place>
         <Profession>
           {profession} at {company}
         </Profession>
-        <Header>Skills</Header>
-        <Skills>
-          {skills.map((skill, index) => (
-            <Skill borders={index === 1 && true} key={index}>
-              {skill}
-            </Skill>
-          ))}
-        </Skills>
         <ButtonContainer>
           <SecondaryButton>Hire Me</SecondaryButton>
         </ButtonContainer>
@@ -88,31 +85,7 @@ const Profession = styled.Text`
   font-family: ${({ theme }) => theme.fonts.Montserrat.MontserratMedium};
   margin-bottom: ${scale(8)}px;
 `;
-const Header = styled.Text`
-  color: ${({ theme }) => theme.colors.white};
-  font-family: ${({ theme }) => theme.fonts.Poppins.PoppinsBold};
-  font-size: ${({ theme }) => scale(theme.fonts.size.m)}px;
-`;
-const Skills = styled.View`
-  flex-direction: row;
-  padding-bottom: 10%;
-`;
-const Skill = styled.Text<{ borders: boolean }>`
-  flex: 1;
-  text-align: center;
-  font-size: ${({ theme }) => scale(theme.fonts.size.m)}px;
-  color: ${({ theme }) => theme.colors.black01};
-  font-family: ${({ theme }) => theme.fonts.Montserrat.MontserratMedium};
 
-  ${({ borders }) =>
-    borders &&
-    css`
-      border-left-width: 2px;
-      border-left-color: ${({ theme }) => theme.colors.black01};
-      border-right-width: 2px;
-      border-right-color: ${({ theme }) => theme.colors.black01};
-    `};
-`;
 const ButtonContainer = styled.View`
   width: 100%;
   height: ${scale(71)}px;

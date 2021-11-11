@@ -1,5 +1,8 @@
-import { call } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
+
+import employeeSaga from './employee/EmployeeSaga';
+import { watchEmployees } from './employee/EmployeeWatcher';
 
 export function* rootSaga() {
-  yield call(console.log, 'Hello from saga');
+  yield all([fork(employeeSaga), fork(watchEmployees)]);
 }

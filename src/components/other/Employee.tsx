@@ -4,13 +4,14 @@ import styled from 'styled-components/native';
 import { default as DetailsIcon } from 'react-native-vector-icons/Entypo';
 import { COLORS } from '@assets/theme';
 
-export const Employee: React.FC<{ name: string; profession: string }> = ({
-  name,
-  profession,
-}) => (
+export const Employee: React.FC<{
+  name: string;
+  profession: string;
+  image: string;
+}> = ({ name, profession, image }) => (
   <>
     <ProfileContainer>
-      <Image source={require('@assets/images/profile.png')} />
+      <Image source={{ uri: image }} />
       <Details>
         <Name>{name}</Name>
         <Profession>{profession}</Profession>
