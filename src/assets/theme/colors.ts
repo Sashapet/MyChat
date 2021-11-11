@@ -6,11 +6,4 @@ export const COLORS = {
   red: '#d62929',
   black01: 'rgba(232,232,232,0.9)',
   black02: 'rgba(97,97,97,1)',
-  black03: 'rgba(0,0,0,0.3)',
-  black04: 'rgba(0,0,0,0.4)',
-  black05: 'rgba(0,0,0,0.5)',
-  black06: 'rgba(0,0,0,0.6)',
-  black07: 'rgba(0,0,0,0.7)',
-  black08: 'rgba(0,0,0,0.8)',
-  black09: 'rgba(0,0,0,0.9)',
 };

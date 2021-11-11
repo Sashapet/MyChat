@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 import styled from 'styled-components/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -9,14 +9,15 @@ import { Error, PickImage } from '@components/other';
 import { newRecordSchema } from '@utils/validatons';
 import { Keyboard } from 'react-native';
 import { chooseErrorTitle } from '@utils/helpers/chooseErrorTitle';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '@state/actions';
+import { selectors } from '@state/selectors';
 
-export const NewRecordView = () => {
+export const NewRecordView: React.FC = () => {
   const [error, setError] = useState('');
   const [imageUri, setImageUri] = useState<string>(null);
   const dispatch = useDispatch();
-
+  const firebaseError = useSelector(selectors.employee.firebaseError);
   const initialValues = {
     firstname: '',
     lastname: '',
@@ -25,6 +26,15 @@ export const NewRecordView = () => {
     profession: '',
     company: '',
   };
+
+  useEffect(
+    () => () => {
+      if (firebaseError) {
+        setError(firebaseError);
+      }
+    },
+    [firebaseError],
+  );
 
   return (
     <Formik

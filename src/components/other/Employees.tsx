@@ -6,15 +6,16 @@ import { EmployeeProps } from '@typings/EmployeeTypes';
 import { scale } from '@utils/helpers/dimensions';
 import { selectors } from '@state/selectors';
 import { useSelector } from 'react-redux';
+import { ROUTES } from '@routes/RouteNames';
 
 import { Employee } from './Employee';
 
-export const Employees = () => {
+export const Employees: React.FC = () => {
   const { navigate } = useNavigation();
   const employees = useSelector(selectors.employee.employees);
   const navigateToProfile = useCallback(
     (EmployeeProps: EmployeeProps) => () => {
-      navigate('ProfileScreen', EmployeeProps);
+      navigate(ROUTES.ProfileScreen, EmployeeProps);
     },
     [],
   );

@@ -1,5 +1,5 @@
 import { moderateScale, scale } from '@utils/helpers/dimensions';
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components/native';
 import { default as DetailsIcon } from 'react-native-vector-icons/Entypo';
 import { COLORS } from '@assets/theme';
@@ -8,7 +8,7 @@ export const Employee: React.FC<{
   name: string;
   profession: string;
   image: string;
-}> = ({ name, profession, image }) => (
+}> = memo(({ name, profession, image }) => (
   <>
     <ProfileContainer>
       <Image source={{ uri: image }} />
@@ -24,7 +24,9 @@ export const Employee: React.FC<{
       name="dots-three-vertical"
     />
   </>
-);
+));
+
+Employee.displayName = 'Employee';
 
 const ProfileContainer = styled.View`
   flex-direction: row;
