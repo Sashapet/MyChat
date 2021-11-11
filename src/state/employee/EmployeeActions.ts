@@ -1,12 +1,18 @@
-// import { constants } from '../constants';
+import { EmployeeProps } from '@typings/EmployeeTypes';
 
-// const setAppUpdateFlag = (needToUpdate: boolean) => ({
-//   type: constants.app.SET_APP_UPDATE_FLAG,
-//   needToUpdate,
-// });
+import { constants } from '../constants';
 
-// const clearAppState = () => ({
-//   type: constants.app.CLEAR_APP_STATE,
-// });
+const create = (payload: { employee: EmployeeProps; imageUri: string }) => ({
+  type: constants.employee.CREATE,
+  payload,
+});
+const setOnSync = (payload: boolean) => ({
+  type: constants.employee.SET_ON_SYNC,
+  payload,
+});
+const fetchEmployees = (payload: Array<EmployeeProps>) => ({
+  type: constants.employee.FETCH,
+  payload,
+});
 
-export const employeeActions = {};
+export const employeeActions = { create, setOnSync, fetchEmployees };

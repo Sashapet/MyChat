@@ -9,10 +9,14 @@ import { Error, PickImage } from '@components/other';
 import { newRecordSchema } from '@utils/validatons';
 import { Keyboard } from 'react-native';
 import { chooseErrorTitle } from '@utils/helpers/chooseErrorTitle';
+import { useDispatch } from 'react-redux';
+import { actions } from '@state/actions';
 
 export const NewRecordView = () => {
   const [error, setError] = useState('');
   const [imageUri, setImageUri] = useState<string>(null);
+  const dispatch = useDispatch();
+
   const initialValues = {
     firstname: '',
     lastname: '',
@@ -25,9 +29,10 @@ export const NewRecordView = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={async data => {
+      onSubmit={async employee => {
         Keyboard.dismiss();
-        console.tron.log(data, imageUri);
+        dispatch(actions.employee.create({ employee, imageUri }));
+        console.tron.log(employee, imageUri);
       }}
       validateOnMount
       validationSchema={newRecordSchema}

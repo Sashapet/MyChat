@@ -23,6 +23,12 @@ export const newRecordSchema = yup.object().shape({
     .max(25, 'city must be at most 25 characters')
     .required('city is a required field')
     .matches(letterRegex, 'only alphabets are allowed for city field'),
-  profession: yup.string().max(15, 'profession must be at most 15 characters'),
-  company: yup.string().max(25, 'company must be at most 25 characters'),
+  profession: yup
+    .string()
+    .max(15, 'profession must be at most 15 characters')
+    .required('profession is a required field'),
+  company: yup
+    .string()
+    .max(25, 'company must be at most 25 characters')
+    .required('company is a required field'),
 });

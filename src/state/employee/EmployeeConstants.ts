@@ -1,4 +1,5 @@
 export const employeeConstants = {
-  // CLEAR_APP_STATE: 'app/CLEAR_APP_STATE',
-  // SET_APP_UPDATE_FLAG: 'app/SET_APP_UPDATE_FLAG',
+  CREATE: 'employee/CREATE',
+  SET_ON_SYNC: 'employee/SET_ON_SYNC',
+  FETCH: 'employee/FETCH',
 };
